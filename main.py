@@ -20,10 +20,19 @@ EXTENSIONS = {
 }
 
 def create_main_files(path):
-    for key in EXTENSIONS.keys():
-        dir_path = os.path.join(path, key)
-        if not os.path.exists(dir_path):
-            os.mkdir(dir_path)
+    """
+
+    Args:
+        path: path to the directory
+
+    Returns:
+        None
+    """
+    if os.path.isdir(path):
+        for key in EXTENSIONS.keys():
+            dir_path = os.path.join(path, key)
+            if not os.path.exists(dir_path):
+                os.mkdir(dir_path)
 
 def define_filetype(filename: str) -> str:
     """
