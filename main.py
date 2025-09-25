@@ -1,4 +1,5 @@
 import os
+import shutil
 
 # Необходимо иметь список всех возможных расширений и то, к какой директории они бы принадлежали
 # Создавать всю структуру папок сразу же? Или создавать по мере появления новых файлов?
@@ -15,7 +16,7 @@ EXTENSIONS = {
     "Documents":[
         ".pdf", ".doc", ".docx", ".xls", ".xlsx",
         ".ppt", ".pptx", ".odt", ".ods", ".odp",
-        ".rtf", ".txt", ".csv", ".md", ".epub", ".tex"
+        ".rtf", ".txt", ".csv", ".md", ".epub", ".tex",
     ],
 }
 
@@ -51,12 +52,17 @@ def define_filetype(filename: str) -> str:
 
 def sort_files(path: str):
     for dirpath, dirnames, filenames in os.walk(path):
+        dirnames.clear()
         for filename in filenames:
+            filetype = define_filetype(filename)
+            if filetype != "Other":
+                shutil.move(os.path.join(dirpath, filename), os.path.join(path, filetype))
 
 
 def main():
-    pass
-
+    path = "/home/ilukssa/Documents/Test"
+    create_main_files(path)
+    sort_files(path)
 
 
 if __name__ == "__main__":
