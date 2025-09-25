@@ -18,6 +18,15 @@ EXTENSIONS = {
         ".rtf", ".txt", ".csv", ".md", ".epub", ".tex"
     ],
 }
+def define_filetype(filename: str) -> str:
+    """
+
+    Args:
+        filename: name of the file
+
+    Returns:
+        type of the file
+    """
 
 def sort_files(path: str):
     for dirpath, dirnames, filenames in os.walk(path):
