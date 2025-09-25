@@ -19,6 +19,11 @@ EXTENSIONS = {
     ],
 }
 
+def sort_files(path: str):
+    for dirpath, dirnames, filenames in os.walk(path):
+        for filename in filenames:
+
+
 def main():
     pass
 
