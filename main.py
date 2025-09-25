@@ -27,6 +27,11 @@ def define_filetype(filename: str) -> str:
     Returns:
         type of the file
     """
+    filetype = '.' + filename.split('.')[-1]
+    for key, value in EXTENSIONS.items():
+        if filetype in value:
+            return key
+    return "Other"
 
 def sort_files(path: str):
     for dirpath, dirnames, filenames in os.walk(path):
