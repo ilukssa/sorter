@@ -18,6 +18,11 @@ EXTENSIONS = {
         ".rtf", ".txt", ".csv", ".md", ".epub", ".tex"
     ],
 }
+
+def create_main_files(path):
+    for key in EXTENSIONS.keys():
+        if not os.path.exists(os.path.join(path, key)):
+
 def define_filetype(filename: str) -> str:
     """
 
